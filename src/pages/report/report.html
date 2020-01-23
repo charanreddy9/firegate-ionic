@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar hideBackButton="true">
+      <ion-buttons left>
+          <img src="assets/imgs/firegate-ic.png" width="60%" />    
+      </ion-buttons>
+      <ion-title>Reports</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content class="app"> 
+  <ion-card class="sub-splash">
+      <div style="display:flex; height:35vh; align-items:center; justify-content: center;">
+        <img src="assets/imgs/reports-icon.png" style="max-width:95px; width:50%">
+      </div>
+  </ion-card>
+    <div padding class="divGrid">
+      <form  (ngSubmit)="postdates(todates)" #todates="ngForm" ngNativeValidate>
+        <ion-list>
+          <ion-item>
+            <ion-label>From Date </ion-label>
+            <ion-datetime displayFormat="YYYY-MMMM-DD" [(ngModel)]="from_date" name="from_date">
+            </ion-datetime>
+          </ion-item>
+            <ion-item>
+            <ion-label>To Date </ion-label>
+            <ion-datetime displayFormat="YYYY-MMMM-DD" [(ngModel)]="to_date" name="to_date">
+            </ion-datetime>
+          </ion-item>
+            <ion-row center>  
+              <ion-col text-center>   
+                  <button ion-button full color="accent">Generate Pdf &nbsp;<ion-icon ios="ios-print" md="ios-print-outline"></ion-icon></button>
+              </ion-col> 
+            </ion-row>
+        </ion-list>
+        </form>
+    </div>
+</ion-content>

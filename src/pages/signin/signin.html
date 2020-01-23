@@ -1,0 +1,40 @@
+<!-- <ion-header>
+  <ion-navbar hideBackButton="true">
+    <ion-title><img src="assets/imgs/logo.png" class="logo" /></ion-title>
+  </ion-navbar>
+</ion-header> -->
+
+<ion-content padding class="login">
+  <ion-grid>
+      <ion-row align-items-start>
+        <ion-col style="padding:30px 0; text-align:center;">
+          <img src="assets/imgs/firegate-logo.png" width="80%" />
+          <!-- <h2>Sign in to the world of MoBoo</h2>
+          <h5>Read More. Learn More. Succeed.</h5> -->
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-row align-items-center>
+    <ion-col>
+      <form (ngSubmit)="onSignin(f)" #f="ngForm" [ngFormOptions]="{updateOn: 'blur'}" novalidate>
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" [(ngModel)]="email" name="email" [pattern]="emailPattern"></ion-input>
+        </ion-item> 
+        <!-- <div style="border-bottom:0;" padding class="padding error" *ngIf="email.errors?.required && email ?.touched && email.invalid" >Please Enter your Email</div>
+        <div padding *ngIf="email.errors?.pattern">Enter Valid Email.</div> -->
+        
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" id="password"  name="password" [(ngModel)]="password"></ion-input>
+        </ion-item> 
+        <ion-row center>  
+          <ion-col text-center>   
+            <button ion-button color="secondary" full col text-center>Login &nbsp;<ion-icon ios="ios-log-in" 
+            md="ios-log-in-outline"></ion-icon></button>
+          </ion-col> 
+        </ion-row>
+      </form>
+    </ion-col>
+  </ion-row>
+</ion-content>

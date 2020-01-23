@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Enter Visitor Details</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="app">
+   <form (ngSubmit)="postAdhoc(addAdhoc)" #addAdhoc="ngForm" ngNativeValidate>
+    <div padding class="divGrid">      
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Enter Name</ion-label>
+          <ion-input type="text"  #personname="ngModel" name="personname"  ngModel required ></ion-input>
+        </ion-item>
+        <div padding *ngIf="personname.errors?.required && personname.touched && personname.pristine && !addAdhoc.submitted " class="error">
+          Name is required
+        </div>
+        <ion-list radio-group ngModel #name="ngModel" name="gender" >
+          <ion-list-header style="margin:0; ">Gender</ion-list-header>
+          <ion-item>
+            <ion-label>Male</ion-label>
+            <ion-radio  value="Male" checked ></ion-radio>
+          </ion-item>
+          <ion-item >
+            <ion-label>Female</ion-label>
+            <ion-radio  value="Female" ></ion-radio>
+          </ion-item>
+        </ion-list>
+        <ion-item>
+          <ion-label floating>Mobile:</ion-label>
+          <ion-input type="number"  id="mobile" [(ngModel)]="mobile"  name="mobile" [readonly]="isReadonly()" ></ion-input> 
+        </ion-item>
+        <ion-item>
+          <ion-label floating>OTP:</ion-label>
+          <ion-input type="number"  id="otp" [(ngModel)]="otp" name="otp"  [readonly]="isReadonly()"></ion-input> 
+        </ion-item>
+        <ion-item>
+          <ion-label floating>Person To Meet :</ion-label>
+          <ion-input type="text"  #person="ngModel"  name="person" ngModel required></ion-input>
+        </ion-item>
+        <div padding *ngIf="person.errors?.required && person.touched" class="error">
+          Person to meet is required
+        </div>
+        <ion-item>
+          <ion-label>Purpose of Visit:</ion-label>
+          <ion-select id="purpose"  [(ngModel)]="purpose" name="purpose" required>
+            <ion-option value="Library">Library</ion-option>
+            <ion-option value="Official">Official</ion-option>
+            <ion-option value="Others">Others</ion-option>
+          </ion-select>
+        </ion-item>
+        <div *ngIf="purpose === 'Others'">
+          <ion-item>
+            <ion-label floating>Comment For which purpose:</ion-label>
+            <ion-textarea type=""  #purpose="ngModel" name="purpose" ngModel ></ion-textarea>
+          </ion-item>
+        </div>
+        <ion-item>
+          <ion-label floating>Comments:</ion-label>
+          <ion-textarea type=""  #comment="ngModel"  name="comment" ngModel ></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <div class="highlightbox">
+              <img style="width:25%;height:25%;border-radius:5px" [src]="base64Image" *ngIf="base64Image" />
+              <button ion-button type="button"  (click)="takePicture()">Take a Picture</button>  
+          </div>
+        </ion-item>
+        <ion-item>
+          <button  type="submit" ion-button full medium color="accent"   [disabled]="disableButton">Create Visitor Entry</button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </form>
+</ion-content>

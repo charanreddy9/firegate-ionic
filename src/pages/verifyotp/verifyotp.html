@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Verify OTP Number</ion-title>
+  </ion-navbar>
+</ion-header> 
+<ion-content class="app"> 
+  <ion-card class="sub-splash">
+      <div style="display:flex; height:35vh; align-items:center; justify-content: center;">
+        <img src="assets/imgs/verify-otp.png" style="max-width:75px; width:50%">
+      </div>
+  </ion-card>
+  <!-- <ion-card>
+    <ion-card-content> --> 
+      <div padding class="divGrid">
+        <form  (ngSubmit)="verifyOtp(vOtp)" #vOtp="ngForm" novalidate>
+            <ion-list>
+              <ion-item> 
+                  <ion-label floating>Enter OTP Number</ion-label>
+                  <ion-input type="number" name="otp" ngModel required #otp="ngModel"></ion-input>             
+              </ion-item>
+              <div padding *ngIf="otp.errors?.required && otp.touched" class="error">
+                  OTP is required
+              </div>
+              {{errorOTP}}
+              <div padding>
+                  <button ion-button full col text-center [disabled] = "!vOtp.valid" color="accent">Verify OTP &nbsp;<ion-icon name="md-checkmark-circle-outline"></ion-icon></button><br />
+                  <div text-center class="resend" >
+                    <a (click)="resend()">Resend OTP</a> 
+                  </div>
+              </div>
+            </ion-list>  
+        </form>
+      </div>
+    <!-- </ion-card-content>
+</ion-card> -->
+</ion-content>

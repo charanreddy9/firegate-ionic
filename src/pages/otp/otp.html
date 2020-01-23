@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Enter Mobile Number</ion-title>
+  </ion-navbar>
+</ion-header> 
+<ion-content class="app"> 
+  <ion-card class="sub-splash">
+      <div style="display:flex; height:35vh; align-items:center; justify-content: center;">
+        <img src="assets/imgs/mobile-otp.png" style="max-width:75px; width:50%">
+      </div>
+  </ion-card>
+  <div padding class="divGrid">
+      <form  (ngSubmit)="sendOtp(smsOtp)" #smsOtp="ngForm" novalidate>
+        <ion-item> 
+          <ion-label floating>Enter Mobile Number</ion-label>
+          <ion-input type="tel"  #mobile="ngModel" maxlength="10" minlength="10" name="mobile"  ngModel required></ion-input> 
+          <div *ngIf="mobile.errors?.required && mobile.touched" class="error">
+              Mobile is Required
+            </div><br />
+            {{errornum}}
+        </ion-item>  
+        <ion-row center>  
+            <ion-col text-center>   
+                <button ion-button  full col text-center [disabled] = "!smsOtp.valid"  color="accent">Send Otp &nbsp;<ion-icon name="arrow-round-forward"></ion-icon></button><br />
+                We will send you an OTP (One Time Password).
+            </ion-col> 
+        </ion-row>
+      </form>
+  </div>
+  
+  <!-- <ion-card>
+    <ion-card-content>
+      <div class="box">
+        <ion-card-header text-center>
+            <h1><b>Enter  Mobile Number</b></h1>
+            <p>Please Conform Your Number <br>we will sent SMS from your phone</p>
+        </ion-card-header>
+      </div> 
+    </ion-card-content>
+  </ion-card> -->
+</ion-content>
